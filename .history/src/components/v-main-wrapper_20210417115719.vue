@@ -1,5 +1,5 @@
 <template>
-    <div class="v-main-wrapper">
+    <div class="main-wrapper">
         <p>{{title}}</p>
         <keep-alive>
             <router-view></router-view>
@@ -16,6 +16,7 @@ export default{
     props: {},
     data (){
         return{
+            hashtag,
             title: "KittyLink"
         }
     },
@@ -28,7 +29,7 @@ export default{
 
 <style>
 .v-main-wrapper {
-    max-width: 1400px;
+    max-width: 600px;
     margin: 0 auto;
 }
 </style>

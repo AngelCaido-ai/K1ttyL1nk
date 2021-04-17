@@ -28,7 +28,7 @@ export default{
 
 <style>
 .v-main-wrapper {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 </style>

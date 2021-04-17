@@ -57,9 +57,8 @@ export default {
 .v-catalog {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: stretch;
-  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
 }
 .v-catalog_link_to_cart {
   position: absolute;

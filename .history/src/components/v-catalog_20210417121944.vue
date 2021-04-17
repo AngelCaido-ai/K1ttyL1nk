@@ -1,9 +1,9 @@
 <template>
   <div class="v-catalog">
     <router-link :to="{ name: 'cart', params: { cart_data: CART } }">
-      <div class="v-catalog_link_to_cart">Cart:</div>
+      <div class="v-catalog_link_to_cart">Cart: {{ }}</div>
     </router-link>
-    {{ info }}
+    {{info}}
     <vCatalogItem
       v-for="product in this.PRODUCTS"
       :key="product.article"
@@ -37,7 +37,6 @@ export default {
     },
   },
   mounted() {
-    this.GET_PRODUCTS_FROM_API();
     axios
               .get('https://dka-develop.ru/api?type=hashtag')
               .then(response => {
@@ -47,7 +46,7 @@ export default {
                 console.log(error);
                 this.errored = true
               })
-              .finally(() => this.loading = false)
+              .finally(() => this.loading = false)  
   },
   watch: {},
 };
@@ -57,9 +56,8 @@ export default {
 .v-catalog {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: stretch;
-  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
 }
 .v-catalog_link_to_cart {
   position: absolute;

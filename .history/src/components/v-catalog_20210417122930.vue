@@ -60,6 +60,14 @@ export default {
   justify-content: flex-start;
   align-items: stretch;
   box-sizing: border-box;
+  &-item {
+    width: 21%;
+    margin: 0 2% 15px;
+    border-radius: 5px;
+    min-width: 280px;
+    box-sizing: border-box;
+    flex: none;
+  }
 }
 .v-catalog_link_to_cart {
   position: absolute;
