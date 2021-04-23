@@ -45,7 +45,7 @@ let store = new Vuex.Store({
         GET_PRODUCTS_FROM_API({
             commit
         }) {
-            return axios('http://localhost:3000/products', {
+            return axios('https://raw.githubusercontent.com/AngelCaido-ai/K1ttyL1nk/main/db.json', {
                     method: "GET"
                 })
                 .then((products) => {

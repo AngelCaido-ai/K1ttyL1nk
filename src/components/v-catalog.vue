@@ -1,22 +1,17 @@
 <template>
   <div class="v-catalog">
-    <router-link :to="{ name: 'cart', params: { cart_data: CART } }">
-      <div class="v-catalog_link_to_cart">Cart:</div>
-    </router-link>
-    {{ info }}
     <vCatalogItem
-      v-for="product in this.PRODUCTS"
-      :key="product.article"
-      :product_data="product"
-      @addToCart="addToCart"
+        v-for="product in this.PRODUCTS"
+        :key="product.article"
+        :product_data="product"
+        @addToCart="addToCart"
     />
   </div>
 </template>
 
 <script>
-import axios from 'axios';
 import vCatalogItem from "./v-catolog-item";
-import { mapActions, mapGetters } from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
   name: "v-catalog",
@@ -24,9 +19,6 @@ export default {
     vCatalogItem,
   },
   props: {},
-  data() {
-    return {};
-  },
   computed: {
     ...mapGetters(["PRODUCTS", "CART"]),
   },
@@ -36,18 +28,13 @@ export default {
       this.ADD_TO_CART(data);
     },
   },
+  filters: {
+    currencydecimal(value) {
+      return value.toFixed(2);
+    }
+  },
   mounted() {
     this.GET_PRODUCTS_FROM_API();
-    axios
-              .get('https://dka-develop.ru/api?type=hashtag')
-              .then(response => {
-                this.info = response;
-              })
-              .catch(error => {
-                console.log(error);
-                this.errored = true
-              })
-              .finally(() => this.loading = false)
   },
   watch: {},
 };
@@ -55,17 +42,14 @@ export default {
 
 <style lang="scss">
 .v-catalog {
+  margin: 0 auto 50px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: stretch;
   box-sizing: border-box;
-}
-.v-catalog_link_to_cart {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 16px;
-  border: solid 1px gray;
+  @media (min-width: 420px) {
+    margin: 0 -1% 50px;
+  }
 }
 </style>

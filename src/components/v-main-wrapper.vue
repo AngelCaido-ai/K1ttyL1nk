@@ -1,6 +1,5 @@
 <template>
     <div class="v-main-wrapper">
-        <p>{{title}}</p>
         <keep-alive>
             <router-view></router-view>
         </keep-alive>
@@ -9,7 +8,6 @@
 </template>
 
 <script>
-
 
 export default{
     name: "v-main-wrapper",

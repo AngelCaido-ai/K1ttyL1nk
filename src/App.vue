@@ -1,16 +1,20 @@
 <template>
   <div id="app">
+    <v-nav-bar />
     <v-main-wrapper />
   </div>
 </template>
 
 <script>
   import vMainWrapper from './components/v-main-wrapper'
+  import vNavBar from './components/v-nav-bar'
 
 export default {
   name: 'app',
   components: {
+    vNavBar,
     vMainWrapper,
+
   }
 }
 </script>
@@ -22,6 +26,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
