@@ -2,6 +2,7 @@
   <div id="app">
     <v-nav-bar />
     <v-main-wrapper />
+
   </div>
 </template>
 
@@ -14,7 +15,10 @@ export default {
   components: {
     vNavBar,
     vMainWrapper,
-
+  },
+  data(){
+  },
+  methods:{
   }
 }
 </script>
