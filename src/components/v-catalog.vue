@@ -6,7 +6,14 @@
         @select="sortByCategories"
         :selected="selected"
     />
-
+    <div class="range-slider">
+      <input type="range" min="0" max="1000" step="10" v-model.number="minPrice" @change="setRangeSlider">
+      <input type="range" min="0" max="1000" step="10" v-model.number="maxPrice" @change="setRangeSlider">
+      <div class="range-values">
+        <p>Min: {{minPrice}}</p>
+        <p>Max: {{maxPrice}}</p>
+      </div>
+    </div>
     <vCatalogItem
         v-for="product in this.filteredProducts"
         :key="product.article"
@@ -36,7 +43,9 @@ export default {
       {name:"Женские", value:"Ж"},
     ],
       selected:'Все',
-      sortedProducts:[]
+      sortedProducts:[],
+      minPrice: 0,
+      maxPrice: 1000
     }
   },
   computed: {
@@ -54,15 +63,27 @@ export default {
     addToCart(data) {
       this.ADD_TO_CART(data);
     },
+    setRangeSlider(){
+      if (this.minPrice > this.maxPrice){
+        let tmp = this.maxPrice;
+        this.maxPrice = this.minPrice;
+        this.minPrice = tmp;
+      }
+      this.sortByCategories()
+    },
     sortByCategories(category){
-      this.sortedProducts = [];
-      let vm = this;
-      this.PRODUCTS.map(function (item){
-        if (item.category === category.name){
-          vm.sortedProducts.push(item);
-        }
-      })
-      this.selected = category.name;
+      let vm= this;
+      this.sortedProducts = [...this.PRODUCTS];
+        vm.sortedProducts = vm.sortedProducts.filter(function (item){
+          return item.price >= vm.minPrice && item.price <= vm.maxPrice
+        })
+      if(category){
+        this.sortedProducts = [...this.PRODUCTS];
+            vm.sortedProducts = vm.sortedProducts.filter(function (e){
+              vm.selected === category.name;
+              return e.category === category.name
+            })
+      }
     }
   },
   filters: {
@@ -72,6 +93,7 @@ export default {
   },
   mounted() {
     this.GET_PRODUCTS_FROM_API();
+    this.sortByCategories()
   },
   watch: {},
 };
@@ -88,5 +110,27 @@ export default {
   @media (min-width: 420px) {
     margin: 0 -1% 50px;
   }
+}
+.filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.range-slider {
+  width: 200px;
+  margin: auto 16px;
+  text-align: center;
+  position: relative;
+}
+.range-slider svg, .range-slider input[type=range] {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+input[type=range]::-webkit-slider-thumb {
+  z-index: 2;
+  position: relative;
+  top: 2px;
+  margin-top: -7px;
 }
 </style>
