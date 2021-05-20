@@ -1,42 +1,42 @@
 [
   {
     "image": "1.jpg",
-    "name": "T-shirt 1",
+    "name": "PcGame 1",
     "price": 100,
     "article": "T1",
     "available": true,
-    "category": "Мужские"
+    "category": "Игровой"
   },
   {
     "image": "2.jpg",
-    "name": "T-shirt 2",
+    "name": "PcOffice 2",
     "price": 500,
     "article": "T2",
     "available": true,
-    "category": "Женские"
+    "category": "Офисный"
   },
   {
     "image": "3.jpg",
-    "name": "T-shirt 3",
+    "name": "PcServer 3",
     "price": 300,
     "article": "T3",
     "available": false,
-    "category": "Женские"
+    "category": "Серверный"
   },
   {
     "image": "4.jpg",
-    "name": "T-shirt 4",
+    "name": "PcGame 4",
     "price": 800,
     "article": "T4",
     "available": true,
-    "category": "Мужские"
+    "category": "Игровой"
   },
   {
     "image": "5.jpg",
-    "name": "T-shirt 5",
+    "name": "PcOffice 5",
     "price": 1000,
     "article": "T5",
     "available": false,
-    "category": "Женские"
+    "category": "Офисный"
   }
 ]
